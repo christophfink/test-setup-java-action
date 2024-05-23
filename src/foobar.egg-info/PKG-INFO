@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: foobar
+Version: 0.0.0
+Summary: Just to test GitHub actions stuff
+Author-email: Christoph Fink <christoph.fink@helsinki.fi>
+License: GPL-3.0-or-later or MIT
+Project-URL: Documentation, https://foobar.readthedocs.org/
+Project-URL: Repository, https://github.com/foobar/foobar.git
+Project-URL: Change log, https://github.com/foobar/foobar/blob/main/CHANGELOG.md
+Project-URL: Bug tracker, https://github.com/foobar/foobar/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: jpype1
+Provides-Extra: tests
+Requires-Dist: pytest; extra == "tests"
+Requires-Dist: pytest-asyncio; extra == "tests"
+Requires-Dist: pytest-cov; extra == "tests"
+Requires-Dist: pytest-lazy-fixtures; extra == "tests"
