@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-import jpype
+from .jvm import start_jvm
 
 __version__ = "0.0.0"
 
-jpype.startJVM()
 print("adfasdfasdf")
+start_jvm()
+print("foobar")
