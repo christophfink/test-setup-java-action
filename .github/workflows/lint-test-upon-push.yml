@@ -13,50 +13,20 @@ concurrency:
 
 jobs:
   test:
-    name: Run tests (${{ matrix.os }}, ${{ matrix.env }})
-    runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        shell: bash -l {0}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: 
-          - macos-latest
-        env:
-          - ci/python_312.yaml
-        jdk_from:
-          - conda-forge
-          - system
+    name: Trigger error
+    runs-on: macos-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4.1.1
+      -  uses: actions/checkout
 
-      - name: Install JVM (system-wide)
-        if: ${{ matrix.jdk_from == 'system' }}
-        uses: actions/setup-java@v4
+      -  uses: actions/setup-java
         with: 
           distribution: temurin
           java-version: 21
 
-      - name: Setup Conda
-        uses: conda-incubator/setup-miniconda@v2.2.0
-        with:
-          activate-environment: r5py
-          channel-priority: strict
-          channels: conda-forge
-          environment-file: ${{ matrix.env }}
-          miniforge-variant: Mambaforge
-          miniforge-version: latest
-          use-mamba: true
-
-      - name: Install JVM (from conda-forge)
-        if: ${{ matrix.jdk_from == 'conda-forge' }}
-        run: conda install 'openjdk>=21'
-
-      - name: Install ourselves
-        run: python -m pip install .[tests]
+      - uses: actions/setup-python
+        with: 
+          python-version: 3.12
 
       - name: Run the thing
-        run: python -c 'import foobar'
+        run: python -c 'import jpype; jpype.start_jvm()'
