@@ -55,5 +55,8 @@ jobs:
         if: ${{ matrix.jdk_from == 'conda-forge' }}
         run: conda install 'openjdk>=21'
 
+      - name: Install ourselves
+        run: python -m pip install .[tests]
+
       - name: Run the thing
         run: python -c 'import foobar'
