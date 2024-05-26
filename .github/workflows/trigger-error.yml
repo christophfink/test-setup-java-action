@@ -34,7 +34,6 @@ jobs:
           environment-file: env.yml
           channel-priority: strict
           channels: conda-forge
-          environment-file: ${{ matrix.env }}
           miniforge-variant: Mambaforge
           miniforge-version: latest
           use-mamba: true
