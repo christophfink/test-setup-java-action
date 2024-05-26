@@ -6,11 +6,12 @@ import os
 import pathlib
 import shutil
 import sys
+import tempfile
 
 import jpype
 import jpype.imports
 
-MAX_JVM_MEMORY = 20000
+MAX_JVM_MEMORY = 20_000_000
 
 
 __all__ = ["start_jvm"]
@@ -43,7 +44,7 @@ def start_jvm():
             except StopIteration:
                 pass  # don’t fail completely if libjsig not found
 
-        TEMP_DIR = "/tmp/asdfasdf/"
+        TEMP_DIR = pathlib.Path(tempfile.mkdtemp())
 
         jpype.startJVM(
             f"-Xmx{MAX_JVM_MEMORY:d}",
