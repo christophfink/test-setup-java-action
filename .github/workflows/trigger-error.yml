@@ -1,6 +1,6 @@
 # vim: set tabstop=2 softtabstop=2 shiftwidth=2 expandtab:
 
-name: trigger that java dll error
+name: Trigger that Java library error
 on:
   push:
   pull_request:
@@ -17,9 +17,9 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      -  uses: actions/checkout@4
+      - uses: actions/checkout@4
 
-      -  uses: actions/setup-java@4
+      - uses: actions/setup-java@4
         with: 
           distribution: temurin
           java-version: 21
