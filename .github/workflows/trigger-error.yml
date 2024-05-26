@@ -28,5 +28,6 @@ jobs:
         with: 
           python-version: 3.12
 
-      - name: Run the thing
-        run: python -c 'import jpype; jpype.start_jvm()'
+      - run: pip install --upgrade jpype
+
+      -  run: python -c 'import jpype; jpype.start_jvm()'
