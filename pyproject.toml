@@ -12,7 +12,9 @@ authors = [
 ]
 
 dependencies = [
+    "configargparse",
     "jpype1",
+    "requests",
 ]
 requires-python = ">=3.9"
 
