@@ -1,8 +1,0 @@
-pyproject.toml
-src/foobar/__init__.py
-src/foobar.egg-info/PKG-INFO
-src/foobar.egg-info/SOURCES.txt
-src/foobar.egg-info/dependency_links.txt
-src/foobar.egg-info/requires.txt
-src/foobar.egg-info/top_level.txt
-tests/test_foobar.py

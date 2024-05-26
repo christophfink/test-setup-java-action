@@ -89,7 +89,5 @@ jobs:
       - name: Test r5py
         run: python -m pytest
 
-      - name: Update codecov.io
-        uses: codecov/codecov-action@v3.1.4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Run the thing
+        run: python -c 'import foobar'
