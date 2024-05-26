@@ -3,10 +3,10 @@
 """Set up a JVM and import basic java classes."""
 
 # import os
-import pathlib
-import shutil
+# import pathlib
+# import shutil
 # import sys
-import tempfile
+# import tempfile
 
 import jpype
 import jpype.imports
@@ -44,7 +44,7 @@ def start_jvm():
         #     except StopIteration:
         #         pass  # don’t fail completely if libjsig not found
 
-        TEMP_DIR = pathlib.Path(tempfile.mkdtemp())
+        # TEMP_DIR = pathlib.Path(tempfile.mkdtemp())
 
         jpype.startJVM(
             # f"-Xmx{MAX_JVM_MEMORY:d}",
@@ -57,21 +57,21 @@ def start_jvm():
             # interrupt=True,
         )
 
-        # Add shutdown hook that cleans up the temporary directory
-        @jpype.JImplements("java.lang.Runnable")
-        class ShutdownHookToCleanUpTempDir:
-            @jpype.JOverride
-            def run(self):
-                try:
-                    shutil.rmtree(TEMP_DIR)
-                except OSError:
-                    pass
+        # # Add shutdown hook that cleans up the temporary directory
+        # @jpype.JImplements("java.lang.Runnable")
+        # class ShutdownHookToCleanUpTempDir:
+        #     @jpype.JOverride
+        #     def run(self):
+        #         try:
+        #             shutil.rmtree(TEMP_DIR)
+        #         except OSError:
+        #             pass
 
-        import java.lang
+        # import java.lang
 
-        java.lang.Runtime.getRuntime().addShutdownHook(
-            java.lang.Thread(ShutdownHookToCleanUpTempDir())
-        )
+        # java.lang.Runtime.getRuntime().addShutdownHook(
+        #     java.lang.Thread(ShutdownHookToCleanUpTempDir())
+        # )
 
 
 # # The JVM should be started before we attempt to import any Java package.
