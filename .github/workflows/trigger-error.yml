@@ -30,4 +30,4 @@ jobs:
 
       - run: pip install --upgrade jpype1
 
-      -  run: python -c 'import jpype; jpype.start_jvm()'
+      -  run: python -c 'import jpype; jpype.startJVM()'
