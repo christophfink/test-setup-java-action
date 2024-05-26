@@ -2,10 +2,10 @@
 
 """Set up a JVM and import basic java classes."""
 
-import os
+# import os
 import pathlib
 import shutil
-import sys
+# import sys
 import tempfile
 
 import jpype
@@ -26,23 +26,23 @@ def start_jvm():
     """
     if not jpype.isJVMStarted():
 
-        # preload signal handling; this, among other things, prevents some of
-        # the warning messages we have been seeing
-        # (cf. https://stackoverflow.com/q/15790403 and
-        #  https://docs.oracle.com/en/java/javase/19/vm/signal-chaining.html )
-        JVM_PATH = pathlib.Path(jpype.getDefaultJVMPath()).resolve()
-        if sys.platform == "linux":
-            try:
-                LIBJSIG = next(JVM_PATH.parent.glob("**/libjsig.so"))
-                os.environ["LD_PRELOAD"] = str(LIBJSIG)
-            except StopIteration:
-                pass  # don’t fail completely if libjsig not found
-        elif sys.platform == "darwin":
-            try:
-                LIBJSIG = next(JVM_PATH.parent.glob("**/libjsig.dylib"))
-                os.environ["DYLD_INSERT_LIBRARIES"] = str(LIBJSIG)
-            except StopIteration:
-                pass  # don’t fail completely if libjsig not found
+        # # preload signal handling; this, among other things, prevents some of
+        # # the warning messages we have been seeing
+        # # (cf. https://stackoverflow.com/q/15790403 and
+        # #  https://docs.oracle.com/en/java/javase/19/vm/signal-chaining.html )
+        # JVM_PATH = pathlib.Path(jpype.getDefaultJVMPath()).resolve()
+        # if sys.platform == "linux":
+        #     try:
+        #         LIBJSIG = next(JVM_PATH.parent.glob("**/libjsig.so"))
+        #         os.environ["LD_PRELOAD"] = str(LIBJSIG)
+        #     except StopIteration:
+        #         pass  # don’t fail completely if libjsig not found
+        # elif sys.platform == "darwin":
+        #     try:
+        #         LIBJSIG = next(JVM_PATH.parent.glob("**/libjsig.dylib"))
+        #         os.environ["DYLD_INSERT_LIBRARIES"] = str(LIBJSIG)
+        #     except StopIteration:
+        #         pass  # don’t fail completely if libjsig not found
 
         TEMP_DIR = pathlib.Path(tempfile.mkdtemp())
 
