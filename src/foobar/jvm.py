@@ -47,14 +47,14 @@ def start_jvm():
         TEMP_DIR = pathlib.Path(tempfile.mkdtemp())
 
         jpype.startJVM(
-            f"-Xmx{MAX_JVM_MEMORY:d}",
-            "-Xcheck:jni",
-            "-Xrs",  # https://stackoverflow.com/q/34951812
-            "-Duser.language=en",  # Set a default locale, …
-            "-Duser.country=US",  # … as R5 formats numeric return …
-            "-Duser.variant=",  # … values as a localised string
-            f"-Djava.io.tmpdir={TEMP_DIR}",
-            interrupt=True,
+            # f"-Xmx{MAX_JVM_MEMORY:d}",
+            # "-Xcheck:jni",
+            # "-Xrs",  # https://stackoverflow.com/q/34951812
+            # "-Duser.language=en",  # Set a default locale, …
+            # "-Duser.country=US",  # … as R5 formats numeric return …
+            # "-Duser.variant=",  # … values as a localised string
+            # f"-Djava.io.tmpdir={TEMP_DIR}",
+            # interrupt=True,
         )
 
         # Add shutdown hook that cleans up the temporary directory
