@@ -12,7 +12,10 @@ CLASS_PATH = pathlib.Path() / "r5-v7.1-r5py-all.jar"
 
 def start_jvm():
     if not jpype.isJVMStarted():
-        jpype.startJVM(classpath=CLASS_PATH)
+        jpype.startJVM(
+            "-Xcheck:jni",
+            classpath=CLASS_PATH,
+        )
 
         # Add shutdown hook that cleans up the temporary directory
         @jpype.JImplements("java.lang.Runnable")
