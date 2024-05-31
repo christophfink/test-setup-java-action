@@ -3,4 +3,4 @@
 from . import jvm  # noqa: F401
 
 import com.conveyal.r5
-print(repr(com.coneyal.r5))
+print(repr(com.conveyal.r5))
