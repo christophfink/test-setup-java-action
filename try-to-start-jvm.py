@@ -53,3 +53,5 @@ for i, finder in enumerate(sys.meta_path):
         sys.meta_path[i] = _JImportLoaderThatStartsTheJvm()
 
 import com.conveyal.r5  # noqa: F401, E402
+
+print(repr(com.conveyal.r5))
