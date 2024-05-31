@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 
+import pathlib
 import sys
 
 import jpype
 import jpype.imports
 
 
+CLASS_PATH = pathlib.Path() / "r5-v7.1-r5py-all.jar"
+
+
 def start_jvm():
     if not jpype.isJVMStarted():
-        jpype.startJVM()
+        jpype.startJVM(classpath=CLASS_PATH)
 
         # Add shutdown hook that cleans up the temporary directory
         @jpype.JImplements("java.lang.Runnable")
@@ -44,3 +48,5 @@ class _JImportLoaderThatStartsTheJvm(jpype.imports._JImportLoader):
 for i, finder in enumerate(sys.meta_path):
     if isinstance(finder, jpype.imports._JImportLoader):
         sys.meta_path[i] = _JImportLoaderThatStartsTheJvm()
+
+import com.conveyal.r5  # noqa: F401, E402
