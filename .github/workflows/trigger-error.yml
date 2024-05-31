@@ -42,4 +42,4 @@ jobs:
 
       - run: curl -LO https://github.com/r5py/r5/releases/download/v7.1-r5py/r5-v7.1-r5py-all.jar
 
-      - run: python try-to-start-jvm.py
+      - run: python src/try-to-start-jvm.py
