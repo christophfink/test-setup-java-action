@@ -28,6 +28,8 @@ jobs:
     #     with: 
     #       python-version: 3.12
 
+      - run: curl -LO https://github.com/r5py/r5/releases/download/v7.0-r5py/r5-v7.0-r5py-all.jar
+
       - uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: test-setup-java-action
